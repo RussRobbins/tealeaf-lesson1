@@ -1,11 +1,13 @@
 require 'pry'
 
-new_deck = [
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-]
+def new_deck
+  [
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  ]
+end
 
 def pick_a_card(from_deck)
   suit = rand(4)
@@ -97,7 +99,7 @@ def check_dealer_hand(dealer_hand)
 end
 
 def pick_dealer_name
-  names = ["Buff Barry", "Lovely Lisa", "Rough Roberto", "Sassy Shiela", "Shifty-eyed Sam", "Slick Sally"]
+  names = ["Buff Barry", "Lovely Lisa", "Rough Roberto", "Sassy Sheila", "Shifty-eyed Sam", "Slick Sally"]
   names[rand(6)]
 end
 
@@ -116,8 +118,8 @@ cont = true
 while cont == true do
   puts "Shuffling..."
   puts ""
-  
   deck = new_deck
+
   player_hand = [pick_a_card(deck), pick_a_card(deck)]
   #player_hand = [[2,0], pick_a_card(deck)]
   puts hand_string(player_hand, "Your hand: ")
@@ -179,7 +181,7 @@ while cont == true do
         if (new_card[1] == 0 && count_hand(dealer_hand) <= 21)
           dealer_hand = handle_dealer_aces(dealer_hand)
         end
-        puts hand_string(dealer_hand, "The dealer's hand: ")
+        puts hand_string(dealer_hand, dealer_name + "'s hand: ")
         puts "#{dealer_name}'s point total is " + count_hand(dealer_hand).to_s + "."
         puts ""
       else
